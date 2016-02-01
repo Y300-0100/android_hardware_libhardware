@@ -696,6 +696,11 @@ struct audio_hw_device {
                                    struct audio_broadcast_stream *out);
 #endif
 
+#ifdef MTK_HARDWARE
+    int (*SetAudioData)(struct audio_hw_device *dev,int par1,size_t len, void *ptr);
+    int (*GetAudioData)(struct audio_hw_device *dev,int par1,size_t len, void *ptr);
+#endif
+
     /** This method creates and opens the audio hardware input stream */
 #ifndef ICS_AUDIO_BLOB
     int (*open_input_stream)(struct audio_hw_device *dev,
