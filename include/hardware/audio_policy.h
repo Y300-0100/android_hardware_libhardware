@@ -234,6 +234,12 @@ struct audio_policy {
     bool (*is_stream_active)(const struct audio_policy *pol,
             audio_stream_type_t stream,
             uint32_t in_past_ms);
+
+#ifdef SPRD_HARDWARE
+    /** SPRD Checks whether audio recording is going in AudioFlinger */
+    bool (*is_audio_recording)(const struct audio_policy *pol);
+#endif
+
 #ifndef ICS_AUDIO_BLOB
 #ifndef MR1_AUDIO_BLOB
     bool (*is_stream_active_remotely)(const struct audio_policy *pol,
